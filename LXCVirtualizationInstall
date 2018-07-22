@@ -1,0 +1,18 @@
+*** Install and Configure LXC ***
+*** Source: https://www.tecmint.com/install-create-run-lxc-linux-containers-on-centos/
+
+yum update
+yum install epel-release
+yum install debootstrap perl libvirt
+
+systemctl status lxc.service
+systemctl start lxc.service
+systemctl start libvirtd 
+systemctl status lxc.service
+
+systemctl status lxc.service
+lxc-checkconfig
+
+*** Create And Manage Containers ***
+ls -alh /usr/share/lxc/templates/
+lxc-create -n container_name -t container_template
