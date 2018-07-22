@@ -1,9 +1,11 @@
 *** Install and Configure LXC ***
 *** Source: https://www.tecmint.com/install-create-run-lxc-linux-containers-on-centos/
+*** Source: https://www.itzgeek.com/how-tos/linux/centos-how-tos/setup-linux-container-with-lxc-on-centos-7-rhel-7.html
 
 yum update
 yum install epel-release
 yum install debootstrap perl libvirt
+yum -y install lxc lxc-templates libcap-devel libcgroup busybox wget bridge-utils lxc-extra
 
 systemctl status lxc.service
 systemctl start lxc.service
@@ -16,3 +18,22 @@ lxc-checkconfig
 *** Create And Manage Containers ***
 ls -alh /usr/share/lxc/templates/
 lxc-create -n container_name -t container_template
+lxc-start -n mydeb -d
+
+lxc-ls
+lxc-info
+lxc-ls --active
+
+To set the root password, you have to start the container and then run:
+lxc-attach --name <ContainerName>
+and then change the root password: passwd root
+
+^^^ That will probably give the following error: passwd: Authentication token manipulation error
+If it does, then follow these steps:
+
+1. lxc-attach --name <ContainerName>
+2. rm -f /etc/shadow
+3. cp /etc/shadow- /etc/shadow
+4. chmod 0640 /etc/shadow
+5. passwd
+Now change the root password and everything should word
