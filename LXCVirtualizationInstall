@@ -33,4 +33,4 @@ If it does, then follow these steps:
 
 1. lxc-attach --name <ContainerName>
 2. rm -f /etc/shadow; cp /etc/shadow- /etc/shadow; chmod 0640 /etc/shadow; passwd
-3. Now change the root password and everything should word
+3. Now change the root password and everything should work
