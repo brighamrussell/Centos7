@@ -32,8 +32,5 @@ and then change the root password: passwd root
 If it does, then follow these steps:
 
 1. lxc-attach --name <ContainerName>
-2. rm -f /etc/shadow
-3. cp /etc/shadow- /etc/shadow
-4. chmod 0640 /etc/shadow
-5. passwd
-Now change the root password and everything should word
+2. rm -f /etc/shadow; cp /etc/shadow- /etc/shadow; chmod 0640 /etc/shadow; passwd
+3. Now change the root password and everything should word
