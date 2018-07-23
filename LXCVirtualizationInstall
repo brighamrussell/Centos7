@@ -1,7 +1,7 @@
 *** Install and Configure LXC ***
 *** Source: https://www.tecmint.com/install-create-run-lxc-linux-containers-on-centos/
 *** Source: https://www.itzgeek.com/how-tos/linux/centos-how-tos/setup-linux-container-with-lxc-on-centos-7-rhel-7.html
-
+*** Source: http://blog.hde.co.jp/entry/2016/05/23/120114
 yum update
 yum install epel-release
 yum install debootstrap perl libvirt
@@ -34,3 +34,15 @@ If it does, then follow these steps:
 1. lxc-attach --name <ContainerName>
 2. rm -f /etc/shadow; cp /etc/shadow- /etc/shadow; chmod 0640 /etc/shadow; passwd
 3. Now change the root password and everything should work
+
+
+yum install vim
+yum install httpd
+systemctl start httpd.service
+systemctl enable httpd.service
+yum install php php-mysql
+
+Error occured stating that apache could not be started. I had to create two folders before it would start:
+/var/log/httpd
+/var/www/html
+
