@@ -13,3 +13,25 @@ IPADDR=172.31.14.170
 NETMASK=255.255.255.0
 GATEWAY=192.168.1.1
 DNS1=8.8.8.8
+
+
+
+*** For the second IP address, create a similar file as the first:
+
+vim /etc/sysconfig/network-scripts/ifcfg-eth0:2
+
+and insert the following with your own values for Device, HWADDR, IPADDR, Netmask, and Gateway:
+BOOTPROTO=static
+DEVICE=eth0:1
+HWADDR=0a:ff:63:6e:83:c6
+ONBOOT=yes
+TYPE=Ethernet
+IPADDR=172.31.14.170
+NETMASK=255.255.255.0
+GATEWAY=192.168.1.1
+DNS1=8.8.8.8
+
+
+Save the file and the reboot the network:
+
+systemctl restart network
