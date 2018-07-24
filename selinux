@@ -1,0 +1,5 @@
+*** Check SE Linux Status
+sestatus
+
+*** Make SE Linux Promiscuous
+setenforce 0
