@@ -2,15 +2,28 @@
 domain=$1;
 www="www.$domain";
 conf="$domain.conf";
-sapath="/etc/httpd/sites-available/$conf";
+sapath="/etc/httpd/conf.d/$conf";
+
 touch $sapath;
 echo "<VirtualHost *:80>
     ServerName $www
-    DocumentRoot /var/www/$domain/public_html
     ServerAlias $domain
-    ErrorLog /var/www/$domain/error.log
+    DocumentRoot /var/www/html/$domain/
+    ErrorLog /var/www/html/$domain/error.log
     CustomLog /var/www/$domain/requests.log combined
 </VirtualHost>">$sapath;
 
 ln -s /etc/httpd/sites-available/$conf /etc/httpd/sites-enabled/$conf;
 apachectl restart;
+
+/etc/httpd/conf.d/domain1.com.conf with content
+
+<VirtualHost *:80>
+
+  ServerName www.domain1.com
+  ServerAlias domain1.com
+  DocumentRoot /var/www/html/domain1
+  ErrorLog /var/www/html/www.domain1.com/error.log
+  CustomLog /var/www/html/www.domain1.com/access.log combined
+
+</VirtualHost>
