@@ -1,5 +1,6 @@
-*** Check SE Linux Status
-sestatus
-
-*** Make SE Linux Promiscuous
-setenforce 0
+*** SE Linux commands
+sestatus  - Check SE Linux Status
+setenforce 0 - Put SE Linux into promiscuous mode
+setenforce 1 - Puts SE Linux into enforce mode
+semodule -l - Lists policies
+semodule -r <policy> - Removes policy
