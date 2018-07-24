@@ -1,0 +1,16 @@
+#!/bin/bash
+domain=$1;
+www="www.$domain";
+conf="$domain.conf";
+sapath="/etc/httpd/sites-available/$conf";
+touch $sapath;
+echo "<VirtualHost *:80>
+    ServerName $www
+    DocumentRoot /var/www/$domain/public_html
+    ServerAlias $domain
+    ErrorLog /var/www/$domain/error.log
+    CustomLog /var/www/$domain/requests.log combined
+</VirtualHost>">$sapath;
+
+ln -s /etc/httpd/sites-available/$conf /etc/httpd/sites-enabled/$conf;
+apachectl restart;
