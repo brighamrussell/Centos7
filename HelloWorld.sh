@@ -1,6 +1,7 @@
-#/bin/bash
+#!/bin/bash
 
 htmlv="<DOCTYPE html>
-<center><h1>Hello World</h1></center>";
-echo $htmlv >/var/www/$1/public_html/index.html;
-chown $2:$2 /var/www/$1/public_html/index.html;
+<center><h1>Hello World $1</h1></center>";
+mkdir -p /var/www/html/$1
+echo $htmlv >/var/www/html/$1/index.html;
+chown apache:apache /var/www/html/$1/index.html;
