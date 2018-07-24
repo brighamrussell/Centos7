@@ -5,7 +5,7 @@ conf="$domain.conf";
 sapath="/etc/httpd/conf.d/$conf";
 
 touch $sapath;
-echo "<VirtualHost *:80>
+echo "<VirtualHost $2:80>
     ServerName $www
     ServerAlias $domain
     DocumentRoot /var/www/html/$domain/
@@ -14,3 +14,4 @@ echo "<VirtualHost *:80>
 </VirtualHost>">$sapath;
 
 apachectl restart;
+
