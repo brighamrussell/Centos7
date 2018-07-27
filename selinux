@@ -4,3 +4,24 @@ setenforce 0 - Put SE Linux into promiscuous mode
 setenforce 1 - Puts SE Linux into enforce mode
 semodule -l - Lists policies
 semodule -r <policy> - Removes policy
+
+
+#!/bin/bash
+#This script can be adjusted to check SELinux Mode and adjust it to the desired settings... Can be run in the background
+
+SELinuxStatus=$(sestatus|grep "Current mode"|awk -F':' '{print $2}'|sed 's/\s*//');
+
+if [[ $SELinuxStatus == 'permissive' ]]
+  then
+    echo "SELinux Status is permissive";
+  else
+    setenforce 0;
+    SELinuxStatus=$(sestatus|grep "Current mode"|awk -F':' '{print $2}'|sed 's/\s*//');
+    if [[ $SELinuxStatus == 'permissive' ]]
+      then
+        echo "SELinux Status was enforcing, but is now permissive";
+      else
+        echo "Yo, bru, check this out, something is wrong with this SELinux shiz";
+    fi
+fi
+
