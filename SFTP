@@ -1,0 +1,18 @@
+https://www.howtoforge.com/tutorial/how-to-setup-an-sftp-server-on-centos/
+
+rpm -qa|grep ssh
+mkdir -p /data/sftp
+chmod 701 /data
+groupadd sftpusers
+useradd -g sftpusers -d /upload -s /sbin/nologin mysftpuser
+passwd mysftpuser
+mkdir -p /data/mysftpuser/upload
+chown -R root:sftpusers /data/mysftpuser
+chown -R mysftpuser:sftpusers /data/mysftpuser/upload
+vim /etc/ssh/sshd_config
+service sshd status
+service sshd restart
+yum list nmap
+yum install nmap -y
+nmap -n 192.168.2.200
+sftp mysftpuser@192.168.2.200
