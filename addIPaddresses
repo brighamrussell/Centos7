@@ -22,7 +22,7 @@ vim /etc/sysconfig/network-scripts/ifcfg-eth0:2
 
 and insert the following with your own values for Device, HWADDR, IPADDR, Netmask, and Gateway:
 BOOTPROTO=static
-DEVICE=eth0:1
+DEVICE=eth0:2
 HWADDR=0a:ff:63:6e:83:c6
 ONBOOT=yes
 TYPE=Ethernet
